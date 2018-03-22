@@ -36,7 +36,7 @@ namespace GameTournaments
                 name += player.Name.ToString() + " ";
             }
 
-            return _players.Count == 0 ? "В команде отсутствуют игроки" : name;
+            return _players.Counter == 0 ? "В команде отсутствуют игроки" : name;
         }
     }
 }
