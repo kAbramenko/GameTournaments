@@ -10,8 +10,8 @@ namespace GameTournaments
     {
         private readonly ICollection<Team> _teams = new List<Team>();
         public string Name { get; set; }
-        public double PrizePool;
-        public Tournament(string name, double prizepool)
+        public int PrizePool;
+        public Tournament(string name, int prizepool)
         {
             Name = name;
             PrizePool = prizepool;
@@ -34,6 +34,30 @@ namespace GameTournaments
                 else teamName += team.Name + ", ";
             }
             return teamName;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() ^ PrizePool.GetHashCode();
+        }
+
+        public void TestFunction()
+        {
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+
+            if(obj is Tournament t)
+            {
+                return t.Name == Name &&
+                       t.PrizePool == PrizePool;
+            }
+
+            return false;
         }
     }
 }
