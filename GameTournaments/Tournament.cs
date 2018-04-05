@@ -10,54 +10,44 @@ namespace GameTournaments
     {
         private readonly ICollection<Team> _teams = new List<Team>();
         public string Name { get; set; }
-        public int PrizePool;
+        public int PrizePool { get; set; }
+        public GameDiscipline GameDiscipline { get; set; }
         public Tournament(string name, int prizepool)
         {
             Name = name;
             PrizePool = prizepool;
         }
-        public void AddTeam(Team team)
+        public Tournament AddTeam(Team team)
         {
             _teams.Add(team);
-            team.Tournament = this;
+            return team.Tournament = this;
         }
+
         public override string ToString()
         {
-            var teamName = $"Tournament name: {Name}\nTeams list:";
+            var teamName = $"Tournament name: {Name}\nPrize pool:{PrizePool}$\nGame discipline:{GameDiscipline}\nTeams list: ";
             foreach (var elementTeam in _teams)
             {
                 var team = elementTeam;
                 if (_teams.Last() == elementTeam)
                 {
-                    teamName += team.Name + ".";
+                    teamName += team.Name + team.ToString() + ".";
                 }
-                else teamName += team.Name + ", ";
+                else teamName += team.Name + team.ToString() + ", ";
             }
             return teamName;
         }
-
-        public override int GetHashCode()
+        public string TeamsToString()
         {
-            return Name.GetHashCode() ^ PrizePool.GetHashCode();
-        }
-
-        public void TestFunction()
-        {
-        }
-
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-                return false;
-
-            if(obj is Tournament t)
+            var teamName = "Teams list: ";
+            int numberTeam = 1;
+            foreach (var elementTeam in _teams)
             {
-                return t.Name == Name &&
-                       t.PrizePool == PrizePool;
+                var team = elementTeam;
+                teamName += Convert.ToString(numberTeam) + team.Name + "\n";
+                numberTeam++;
             }
-
-            return false;
+            return teamName;
         }
     }
 }

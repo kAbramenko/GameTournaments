@@ -8,14 +8,14 @@ namespace GameTournaments
 {
     class Team
     {
-        ICollection<Player> _players = new List<Player>();
+        readonly ICollection<Player> _players = new List<Player>();
         public string Name { get; set; }
-        private GameDiscipline _gameDiscipline;
+        //private GameDiscipline _gameDiscipline;
         public Tournament Tournament { get; set; }
-        public Team(string name, GameDiscipline gameDiscipline)
+        public Team(string name)
         {
             Name = name;
-            _gameDiscipline = gameDiscipline;
+            //_gameDiscipline = gameDiscipline;
         }
 
         public Team()
@@ -29,14 +29,18 @@ namespace GameTournaments
         }
         public override string ToString()
         {
-            string name = "";
+            string name = "(";
             foreach (Player elementPlayer in _players)
             {
                 var player = elementPlayer;
-                name += player.Name.ToString() + " ";
+                if (_players.Last() == elementPlayer)
+                {
+                    name += player.NickName + ")";
+                }
+                else name += player.NickName  + ", ";
             }
 
-            return _players.Count == 0 ? "В команде отсутствуют игроки" : name;
+            return _players.Count == 0 ? " (В команде отсутствуют игроки)" : name;
         }
     }
 }

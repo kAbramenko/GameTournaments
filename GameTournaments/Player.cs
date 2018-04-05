@@ -13,14 +13,13 @@ namespace GameTournaments
         public string NickName;
         public DateTime Age;
         public Team Team { get; set; }
-        public enum GameDiscipline { Dota, CS }
-        public Player(string name, string surname, string nickname, DateTime age, string gameDiscipline)
+        public GameDiscipline GameDiscipline { get; set; }
+        public Player(string name, string surname, string nickname, DateTime age)
         {
             Name = name;
             Surname = surname;
             NickName = nickname;
             Age = age;
-           // GameDiscipline = gameDiscipline;
         }
 
         public Player()
