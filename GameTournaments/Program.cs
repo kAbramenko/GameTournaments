@@ -7,7 +7,7 @@ namespace GameTournaments
 {
     public class Program
     {
-        static List<Tournament> listTournaments = new List<Tournament>();
+        public static List<Tournament> listTournaments = new List<Tournament>();
         static void Main()
         {
             var mainInterface = new Interface();

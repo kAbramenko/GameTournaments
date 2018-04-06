@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameDiscipline.cs" />
+    <Compile Include="NewInterface.cs" />
     <Compile Include="Interface.cs" />
     <Compile Include="ListTournaments.cs" />
     <Compile Include="Player.cs" />
