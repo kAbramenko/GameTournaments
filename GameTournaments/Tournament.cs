@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameTournaments
 {
-    partial class Tournament
+    public partial class Tournament
     {
         private readonly ICollection<Team> _teams = new List<Team>();
         public string Name { get; set; }
@@ -17,10 +17,25 @@ namespace GameTournaments
             Name = name;
             PrizePool = prizepool;
         }
+        public Tournament(string name, int prizepool, int id)
+        {
+            Name = name;
+            PrizePool = prizepool;
+            GameDiscipline = (GameDiscipline)id;
+        }
         public Tournament AddTeam(Team team)
         {
             _teams.Add(team);
             return team.Tournament = this;
+        }
+
+        public bool Contains(Team team)
+        {
+            foreach (var element in _teams)
+            {
+                if (element == team) return true;
+            }
+            return false;
         }
 
         public override string ToString()

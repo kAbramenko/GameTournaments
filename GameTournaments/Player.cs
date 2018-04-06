@@ -6,20 +6,23 @@ using System.Threading.Tasks;
 
 namespace GameTournaments
 {
-    class Player
+    public class Player
     {
-        public string Name;
-        public string Surname;
-        public string NickName;
-        public DateTime Age;
+        public string Name { get; }
+        public string Surname { get; }
+        public string NickName { get; }
+        public DateTime BirthDay { get; }
+        public int Age => DateTime.Now.Year - BirthDay.Year - (IsFullYear ? 0 : 1);
+        private bool IsFullYear => DateTime.Now.Month > BirthDay.Month || 
+            DateTime.Now.Month == BirthDay.Month && DateTime.Now.Day >= BirthDay.Day;
         public Team Team { get; set; }
         public GameDiscipline GameDiscipline { get; set; }
-        public Player(string name, string surname, string nickname, DateTime age)
+        public Player(string name, string surname, string nickname, DateTime birthDay)
         {
             Name = name;
             Surname = surname;
             NickName = nickname;
-            Age = age;
+            BirthDay = birthDay;
         }
 
         public Player()
@@ -29,14 +32,8 @@ namespace GameTournaments
 
         public override string ToString()
         {
-            return $"Имя: {Name}\nФамилия: {Surname}\nНикнейм: {NickName}\nВозраст: {GetAge(Age)}Команда: {Team?.Name ?? "нет"}\n";
+            return $"Имя: {Name}\nФамилия: {Surname}\nНикнейм: {NickName}\nВозраст: {Age}\nКоманда: {Team?.Name ?? "нет"}\n";
         }
 
-        private int GetAge(DateTime date)
-        {
-            var nowDate = DateTime.Now.Year;
-            var age = nowDate - date.Year;
-            return age;
-        }
     }
 }

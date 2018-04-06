@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace GameTournaments
 {
-    class Program
+    public class Program
     {
         static List<Tournament> listTournaments = new List<Tournament>();
         static void Main()
@@ -43,10 +43,8 @@ namespace GameTournaments
                             countPlayers = Convert.ToInt32(Console.ReadLine());
                             listTournaments[listTournaments.Count - 1] = listTournaments[listTournaments.Count - 1].AddTeam(mainInterface.AddTeam(listTournaments[listTournaments.Count - 1], countPlayers));
                         }
-
                         break;
                     case 2:
-                        Console.WriteLine("Case 2");
                         if (listTournaments.Count > 0)
                         {
                             Console.WriteLine(listTournaments[listTournaments.Count - 1].ToString());
@@ -57,7 +55,6 @@ namespace GameTournaments
                         }
                         break;
                     case 3:
-                        Console.WriteLine("Case 3");
                         foreach (var element in listTournaments)
                         {
                             Console.WriteLine(element.ToString());

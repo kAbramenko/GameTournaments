@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameTournaments
 {
-    class Team
+    public class Team
     {
-        readonly ICollection<Player> _players = new List<Player>();
+        private readonly ICollection<Player> _players = new List<Player>();
         public string Name { get; set; }
         //private GameDiscipline _gameDiscipline;
         public Tournament Tournament { get; set; }
@@ -21,7 +21,16 @@ namespace GameTournaments
         public Team()
         {
         }
-      
+
+        public bool Contains(Player player)
+        {
+            foreach (var element in _players)
+            {
+                if (element == player) return true;
+            }
+            return false;
+        }
+
         public void AddPlayer(Player player)
         {
             _players.Add(player);
