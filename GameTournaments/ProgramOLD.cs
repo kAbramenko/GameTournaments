@@ -5,17 +5,12 @@ using System.Windows.Forms;
 
 namespace GameTournaments
 {
-    public class Program
+    public class ProgramOLD
     {
-        public static int countTeams;
-        public static int countPlayers;
         public static List<Tournament> listTournaments = new List<Tournament>();
-        static void Main()
+        static void MainOld()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-
+            var mainInterface = new Interface();
             int caseSwitch = -1;
             while (caseSwitch != 0)
             {
@@ -23,10 +18,12 @@ namespace GameTournaments
                 Console.WriteLine("2. Последний турнир");
                 Console.WriteLine("3. Все турниры");
                 Console.WriteLine("4. Выбрать турнир");
+
                 caseSwitch = Convert.ToInt32(Console.ReadLine());
                 switch (caseSwitch)
                 {
                     case 1:
+                        //listTournaments.Add(mainInterface.CreateTournament());
                         Console.Write("Введите название турнира: ");
                         string tourName = Console.ReadLine();
                         Console.Write("Введите призовой фонд (валюта $): ");
@@ -44,7 +41,7 @@ namespace GameTournaments
                         {
                             Console.WriteLine("Введите количество игроков в команде: ");
                             countPlayers = Convert.ToInt32(Console.ReadLine());
-                            InterfaceAddTeam(listTournaments[listTournaments.Count - 1], countPlayers);
+                            listTournaments[listTournaments.Count - 1] = listTournaments[listTournaments.Count - 1].AddTeam(mainInterface.AddTeam(listTournaments[listTournaments.Count - 1], countPlayers));
                         }
                         break;
                     case 2:
@@ -101,36 +98,6 @@ namespace GameTournaments
             var tournament = new Tournament(tourName, prizePool);
             tournament.GameDiscipline = (GameDiscipline)idDiscipline;
             listTournaments.Add(tournament);
-        }
-        public static void InterfaceAddTeam(Tournament tour, int count)
-        {
-            Console.Write("Введите название команды: ");
-            string teamName = Console.ReadLine();
-            var team = new Team
-            {
-                Name = teamName,
-                Tournament = tour
-            };
-            string surName = "";
-            string nickName = "";
-            string name = "";
-            DateTime age;
-            for (var i = 0; i < count; i++)
-            {
-                Console.WriteLine($"Заполнение информации. Игрок номер {i + 1}");
-                Console.Write($"#Имя:");
-                name = Console.ReadLine();
-                Console.Write($"#Фамилия:");
-                surName = Console.ReadLine();
-                Console.Write($"#Никнейм:");
-                nickName = Console.ReadLine();
-                Console.Write($"#Дата рождения:");
-                age = Convert.ToDateTime(Console.ReadLine());
-                var player = new Player(name, surName, nickName, age);
-                team.AddPlayer(player);
-            }
-            tour.AddTeam(team);
-            listTournaments.Add(tour);
         }
     }
 }

@@ -38,18 +38,27 @@ namespace GameTournaments
             return false;
         }
 
+        public string ToString(bool check)
+        {
+            if (check == true)
+            {
+                var teamName = $"Tournament name: {Name}\nPrize pool:{PrizePool}$\nGame discipline:{GameDiscipline}\nTeams list: ";
+                foreach (var elementTeam in _teams)
+                {
+                    var team = elementTeam;
+                    if (_teams.Last() == elementTeam)
+                    {
+                        teamName += team.Name + team.ToString() + ".";
+                    }
+                    else teamName += team.Name + team.ToString() + ", ";
+                }
+                return teamName;
+            }
+            else return "";
+        }
         public override string ToString()
         {
-            var teamName = $"Tournament name: {Name}\nPrize pool:{PrizePool}$\nGame discipline:{GameDiscipline}\nTeams list: ";
-            foreach (var elementTeam in _teams)
-            {
-                var team = elementTeam;
-                if (_teams.Last() == elementTeam)
-                {
-                    teamName += team.Name + team.ToString() + ".";
-                }
-                else teamName += team.Name + team.ToString() + ", ";
-            }
+            var teamName = $"{Name}({GameDiscipline}): {PrizePool}$ ";
             return teamName;
         }
         public string TeamsToString()

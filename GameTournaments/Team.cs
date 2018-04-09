@@ -49,7 +49,11 @@ namespace GameTournaments
                 else name += player.NickName  + ", ";
             }
 
-            return _players.Count == 0 ? " (В команде отсутствуют игроки)" : name;
+            return _players.Count == 0 ? $"(В команде {Name} отсутствуют игроки)" : name;
+        }
+        public string Info()
+        {
+            return $"Команда {Name} учавствует в турнире {Tournament.Name}";
         }
     }
 }

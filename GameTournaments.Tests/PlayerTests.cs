@@ -11,7 +11,7 @@ namespace GameTournaments.Tests
         {
             //arrange
             Player player = new Player("Kirill", "Abramenko", "DecadE", Convert.ToDateTime("12.08.1998"));
-            string expected = "Имя: Kirill\nФамилия: Abramenko\nНикнейм: DecadE\nВозраст: 20\nКоманда: нет\n";
+            string expected = "Имя: Kirill\nФамилия: Abramenko\nНикнейм: DecadE\nВозраст: 19\nКоманда: нет\n";
 
             //act
             string actual = player.ToString();

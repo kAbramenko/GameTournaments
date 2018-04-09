@@ -36,18 +36,23 @@
                     Name = teamName,
                     Tournament = tour
                 };
-                for (var i = 0; i < count; i++)
+                string surName = "";
+                string nickName = "";
+                string name = "";
+                DateTime age;
+            for (var i = 0; i < count; i++)
                 {
-                    Console.WriteLine($"Заполнение информации. Игрок номер {i + 1}");
-                    Console.Write($"#Имя:");
-                    var player = new Player { Name = Console.ReadLine() };
-                    Console.Write($"#Фамилия:");
-                    player.Surname = Console.ReadLine();
-                    Console.Write($"#Никнейм:");
-                    player.NickName = Console.ReadLine();
-                    Console.Write($"#Дата рождения:");
-                    player.Age = Convert.ToDateTime(Console.ReadLine());
-                    team.AddPlayer(player);
+                Console.WriteLine($"Заполнение информации. Игрок номер {i + 1}");
+                Console.Write($"#Имя:");
+                name = Console.ReadLine();
+                Console.Write($"#Фамилия:");
+                surName = Console.ReadLine();
+                Console.Write($"#Никнейм:");
+                nickName = Console.ReadLine();
+                Console.Write($"#Дата рождения:");
+                age = Convert.ToDateTime(Console.ReadLine());
+                var player = new Player(name, surName, nickName, age);
+                team.AddPlayer(player);
                 }
                 return team;
             }
