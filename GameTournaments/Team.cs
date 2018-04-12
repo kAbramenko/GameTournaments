@@ -36,7 +36,7 @@ namespace GameTournaments
             _players.Add(player);
             player.Team = this;
         }
-        public override string ToString()
+        public string ToStringInfo()
         {
             string name = "(";
             foreach (Player elementPlayer in _players)
@@ -51,9 +51,16 @@ namespace GameTournaments
 
             return _players.Count == 0 ? $"(В команде {Name} отсутствуют игроки)" : name;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
+    
         public string Info()
         {
-            return $"Команда {Name} учавствует в турнире {Tournament.Name}";
+            string playersNames = ToStringInfo();
+            return $"Команда {Name} учавствует в турнире {Tournament.Name}\nСписок игроков: {playersNames}";
         }
     }
 }

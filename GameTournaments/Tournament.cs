@@ -37,7 +37,10 @@ namespace GameTournaments
             }
             return false;
         }
-
+        public ICollection<Team> GetTeams()
+        {
+            return _teams;
+        }
         public string ToString(bool check)
         {
             if (check == true)

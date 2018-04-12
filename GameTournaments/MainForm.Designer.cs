@@ -40,13 +40,25 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxSurname = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxNickname = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxDate = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
@@ -156,8 +168,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.textBox6);
@@ -167,23 +177,6 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Создание команды";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Количество игроков:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(9, 89);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 6;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label4
             // 
@@ -212,11 +205,140 @@
             this.textBox6.TabIndex = 5;
             this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxDate);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.textBoxNickname);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.textBoxSurname);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.textBoxName);
+            this.groupBox3.Location = new System.Drawing.Point(743, 519);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 185);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Создание игрока";
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Фамилия";
+            // 
+            // textBoxSurname
+            // 
+            this.textBoxSurname.Location = new System.Drawing.Point(9, 89);
+            this.textBoxSurname.Name = "textBoxSurname";
+            this.textBoxSurname.Size = new System.Drawing.Size(93, 20);
+            this.textBoxSurname.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Имя";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(9, 154);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Добавить";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(9, 49);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(93, 20);
+            this.textBoxName.TabIndex = 5;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(734, 12);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(248, 472);
+            this.listBox3.TabIndex = 13;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            this.listBox3.DoubleClick += new System.EventHandler(this.listBox3_DoubleClick_1);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 112);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Ник:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // textBoxNickname
+            // 
+            this.textBoxNickname.Location = new System.Drawing.Point(9, 128);
+            this.textBoxNickname.Name = "textBoxNickname";
+            this.textBoxNickname.Size = new System.Drawing.Size(93, 20);
+            this.textBoxNickname.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(105, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Дата рождения:";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // textBoxDate
+            // 
+            this.textBoxDate.Location = new System.Drawing.Point(108, 49);
+            this.textBoxDate.Name = "textBoxDate";
+            this.textBoxDate.Size = new System.Drawing.Size(86, 20);
+            this.textBoxDate.TabIndex = 11;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(553, 490);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(66, 23);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "Удалить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(916, 490);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(66, 23);
+            this.button6.TabIndex = 16;
+            this.button6.Text = "Удалить";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 725);
+            this.ClientSize = new System.Drawing.Size(1019, 725);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.groupBox1);
@@ -229,6 +351,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -250,7 +374,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxSurname;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBoxNickname;
+        private System.Windows.Forms.TextBox textBoxDate;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }

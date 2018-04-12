@@ -15,7 +15,7 @@ namespace GameTournaments
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-
+            /*
             int caseSwitch = -1;
             while (caseSwitch != 0)
             {
@@ -130,7 +130,7 @@ namespace GameTournaments
                 team.AddPlayer(player);
             }
             tour.AddTeam(team);
-            listTournaments.Add(tour);
+            listTournaments.Add(tour);*/
         }
     }
 }

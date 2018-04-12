@@ -32,8 +32,16 @@ namespace GameTournaments
 
         public override string ToString()
         {
-            return $"Имя: {Name}\nФамилия: {Surname}\nНикнейм: {NickName}\nВозраст: {Age}\nКоманда: {Team?.Name ?? "нет"}\n";
+            return $"{Name} {NickName} {Surname}  ({Age} лет)";
         }
 
+        public string ToStringInfo()
+        {
+            return $"Имя: {Name}\nФамилия: {Surname}\nНикнейм: {NickName}\nВозраст: {Age}\nКоманда: {Team?.Name ?? "нет"}\n";
+        }
+        public string Info()
+        {
+            return $"Игрок {Name} состоит в команде '{Team.Name}'";
+        }
     }
 }
