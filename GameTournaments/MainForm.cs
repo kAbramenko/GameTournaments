@@ -12,21 +12,9 @@ namespace GameTournaments
 {
     public partial class MainForm : Form
     {
-        /*  BindingList<Tournament> _tournaments = new BindingList<Tournament>();
-              BindingList<Team> _teams = new BindingList<Team>();
-              BindingList<Player> _players = new BindingList<Player>();
-
-              public MainForm()
-              {
-                  InitializeComponent();
-                  listBox1.DataSource = _tournaments;
-                  listBox2.DataSource = _teams;
-                  listBox3.DataSource = _players;
-              }
-        */
         BindingList<Tournament> _tournaments = new BindingList<Tournament>();
         Tournament _currentTournament = null;
-        Team _currentTeam = new Team();
+        Team _currentTeam = null;
 
         public MainForm()
         {
@@ -75,7 +63,6 @@ namespace GameTournaments
         {
             var player = new Player(textBoxName.Text, textBoxSurname.Text, textBoxNickname.Text, Convert.ToDateTime(textBoxDate.Text));
             var team = (Team)listBox2.SelectedItem;
-            team.AddPlayer(player);
             listBox2.SelectedItem = team;
             _currentTeam.AddPlayer(player);
         }
@@ -151,7 +138,6 @@ namespace GameTournaments
         private void button4_Click(object sender, EventArgs e)
         {
             AddPlayer();
-            listBox2.Refresh();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -167,7 +153,18 @@ namespace GameTournaments
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentTournament = (Tournament)listBox1.SelectedItem;
+            _currentTeam = (Team)listBox2.SelectedItem;
             Init();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
