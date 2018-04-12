@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GameTournaments
 {
     public class Team
     {
-        private readonly ICollection<Player> _players = new List<Player>();
+        private readonly BindingList<Player> _players = new BindingList<Player>();
         public string Name { get; set; }
         //private GameDiscipline _gameDiscipline;
         public Tournament Tournament { get; set; }
@@ -30,7 +31,10 @@ namespace GameTournaments
             }
             return false;
         }
-
+        public ICollection<Player> GetPlayers()
+        {
+            return _players;
+        }
         public void AddPlayer(Player player)
         {
             _players.Add(player);
@@ -61,6 +65,11 @@ namespace GameTournaments
         {
             string playersNames = ToStringInfo();
             return $"Команда {Name} учавствует в турнире {Tournament.Name}\nСписок игроков: {playersNames}";
+        }
+
+        internal void RemovePlayer(Player player)
+        {
+            _players.Remove(player);
         }
     }
 }

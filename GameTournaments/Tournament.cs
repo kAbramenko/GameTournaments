@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GameTournaments
 {
     public partial class Tournament
     {
-        private readonly ICollection<Team> _teams = new List<Team>();
+        private readonly BindingList<Team> _teams = new BindingList<Team>();
         public string Name { get; set; }
         public int PrizePool { get; set; }
         public GameDiscipline GameDiscipline { get; set; }
@@ -75,6 +76,11 @@ namespace GameTournaments
                 numberTeam++;
             }
             return teamName;
+        }
+
+        internal void RemoveTeam(Team team)
+        {
+            _teams.Remove(team);
         }
     }
 }

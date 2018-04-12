@@ -6,47 +6,39 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 
 namespace GameTournaments
 {
     public partial class MainForm : Form
     {
+        /*  BindingList<Tournament> _tournaments = new BindingList<Tournament>();
+              BindingList<Team> _teams = new BindingList<Team>();
+              BindingList<Player> _players = new BindingList<Player>();
+
+              public MainForm()
+              {
+                  InitializeComponent();
+                  listBox1.DataSource = _tournaments;
+                  listBox2.DataSource = _teams;
+                  listBox3.DataSource = _players;
+              }
+        */
         BindingList<Tournament> _tournaments = new BindingList<Tournament>();
-        BindingList<Team> _teams = new BindingList<Team>();
-        BindingList<Player> _players = new BindingList<Player>();
+        Tournament _currentTournament = null;
+        Team _currentTeam = new Team();
 
         public MainForm()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
             listBox1.DataSource = _tournaments;
-            listBox2.DataSource = _teams;
-            listBox3.DataSource = _players;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
+            listBox2.DataSource = _currentTournament?.GetTeams();
+            listBox3.DataSource = _currentTeam?.GetPlayers();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -76,8 +68,7 @@ namespace GameTournaments
                 Name = textBox6.Text,
                 Tournament = tour
             };
-            tour.AddTeam(team);
-            _teams.Add(team);
+            _currentTournament.AddTeam(team);
         }
 
         private void AddPlayer()
@@ -86,7 +77,7 @@ namespace GameTournaments
             var team = (Team)listBox2.SelectedItem;
             team.AddPlayer(player);
             listBox2.SelectedItem = team;
-            _players.Add(player);
+            _currentTeam.AddPlayer(player);
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -109,7 +100,11 @@ namespace GameTournaments
             {
                 MessageBox.Show("Сначала создайте или выберете турнир!");
             }
-            else  AddTeam((Tournament)listBox1.SelectedItem);
+            else
+            {
+                AddTeam((Tournament)listBox1.SelectedItem);
+            }
+
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -124,7 +119,8 @@ namespace GameTournaments
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            _currentTeam = (Team)listBox2.SelectedItem;
+            Init();
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -144,12 +140,12 @@ namespace GameTournaments
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Init();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            _teams.Remove((Team)listBox2.SelectedItem);
+            _currentTournament.RemoveTeam((Team)listBox2.SelectedItem);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -160,12 +156,18 @@ namespace GameTournaments
 
         private void button6_Click(object sender, EventArgs e)
         {
-            _players.Remove((Player)listBox3.SelectedItem);
+            _currentTeam.RemovePlayer((Player)listBox3.SelectedItem);
         }
 
         private void listBox3_DoubleClick_1(object sender, EventArgs e)
         {
             MessageBox.Show(((Player)listBox3.SelectedItem).Info());
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentTournament = (Tournament)listBox1.SelectedItem;
+            Init();
         }
     }
 }
