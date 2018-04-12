@@ -23,10 +23,24 @@ namespace GameTournaments
             listBox2.DataSource = _teams;
             listBox3.DataSource = _players;
         }
+        /*
+        BindingList<Tournament> _tournaments = new BindingList<Tournament>();
+        Tournament _currentTournament = null;
+        Team _currentTeam = null;
 
+        public MainForm()
+        {
+            InitializeComponent();
+            listBox1.DataSource = _tournaments;
+            listBox2.DataSource = _currentTournament.GetTeams();
+            listBox3.DataSource = _currentTeam.GetPlayers();
+        }
+        */
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Tournament current = (Tournament)listBox1.SelectedItem;
+            listBox2.DataSource = current.GetTeams();
+            listBox2.Refresh();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -60,6 +74,8 @@ namespace GameTournaments
 
         private void button2_Click(object sender, EventArgs e)
         {
+            listBox2.DataSource = null;
+            listBox3.DataSource = null;
             _tournaments.Remove((Tournament)listBox1.SelectedItem);
         }
         private void AddTournament(string tourName, int prizePool, int idDiscipline)
@@ -107,7 +123,7 @@ namespace GameTournaments
         {
             if (listBox1.SelectedIndex < 0)
             {
-                MessageBox.Show("Сначала создайте или выберете турнир!");
+                MessageBox.Show("Сначала создайте или выберите турнир!");
             }
             else  AddTeam((Tournament)listBox1.SelectedItem);
         }
@@ -124,7 +140,12 @@ namespace GameTournaments
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Team current = (Team)listBox2.SelectedItem;
+            if ((listBox3.DataSource != null) && (current.GetPlayers() != null))
+            {
+                listBox3.DataSource = current.GetPlayers();
+                listBox3.Refresh();
+            }
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)
@@ -144,18 +165,25 @@ namespace GameTournaments
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Team current = (Team)listBox2.SelectedItem;
+            listBox3.DataSource = current.GetPlayers();
+            listBox3.Refresh();
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            listBox3.DataSource = null;
             _teams.Remove((Team)listBox2.SelectedItem);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            AddPlayer();
-            listBox2.Refresh();
+            if (listBox2.SelectedIndex < 0)
+            {
+                MessageBox.Show("Сначала создайте или выберите команду!");
+            }
+            else AddPlayer();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -166,6 +194,25 @@ namespace GameTournaments
         private void listBox3_DoubleClick_1(object sender, EventArgs e)
         {
             MessageBox.Show(((Player)listBox3.SelectedItem).Info());
+        }
+
+        private void listBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void listBox1_SelectedIndexChanged_2(object sender, EventArgs e)
+        {
+            Tournament current = (Tournament)listBox1.SelectedItem;
+            Team currentTeam = (Team)listBox2.SelectedItem;
+            listBox2.DataSource = current.GetTeams();
+            listBox2.Refresh();
+            listBox3.DataSource = currentTeam.GetPlayers();
+            listBox3.Refresh();
         }
     }
 }

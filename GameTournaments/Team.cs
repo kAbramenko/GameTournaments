@@ -51,7 +51,10 @@ namespace GameTournaments
 
             return _players.Count == 0 ? $"(В команде {Name} отсутствуют игроки)" : name;
         }
-
+        public ICollection<Player> GetPlayers()
+        {
+            return _players;
+        }
         public override string ToString()
         {
             return $"{Name}";
