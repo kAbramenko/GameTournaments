@@ -7,7 +7,7 @@ namespace PasswordRecovery
     {
         static void Main(string[] args)
         {
-            /*Console.Write("Введите набор символов>");
+            Console.Write("Введите набор символов>");
             string inputLine = Console.ReadLine();
 
             Algorithms permAlgorithm = new Algorithms();
@@ -17,30 +17,7 @@ namespace PasswordRecovery
             Console.WriteLine("# всего вариантов: " + permAlgorithm.PermutationCount);
 
             Console.WriteLine("Нажмите любую клавишу для выхода.");
-            Console.ReadKey();*/
-            string one = "12.08.1998";
-            string one1 = "45.08.1998";
-            string one2 = "sdfgsdt";
-            string one3 = "...";
-            string one4 = "00.00.0000";
-            string one5 = "10.20.1998";
-            Console.WriteLine(IsDateContains(one));
-            Console.WriteLine(IsDateContains(one1));
-            Console.WriteLine(IsDateContains(one2));
-            Console.WriteLine(IsDateContains(one3));
-            Console.WriteLine(IsDateContains(one4));
-            Console.WriteLine(IsDateContains(one5));
-            Console.ReadLine();
-            bool IsDateContains(string input)
-            {
-                Regex regex = new Regex(@"^(((0[1-9]|[12]\d|3[01])\.(0[13578]|1[02])\.((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\.(0[13456789]|1[012])\.((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\.02\.((19|[2-9]\d)\d{2}))|(29\.02\.((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$");
-                Match match = regex.Match(input);
-                if (match.Success)
-                {
-                    return true;
-                }
-                else return false;
-            }
+            Console.ReadKey();
         }
     }
 

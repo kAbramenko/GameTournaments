@@ -18,7 +18,6 @@ namespace GameTournaments
         BindingList<Tournament> _tournaments = new BindingList<Tournament>();
         Tournament _currentTournament = null;
         Team _currentTeam = null;
-        public string oldString;
         public MainForm()
         {
             InitializeComponent();
@@ -384,6 +383,11 @@ namespace GameTournaments
                 return true;
             }
             else return false;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -223,23 +223,23 @@
             this.groupBox3.Controls.Add(this.playerNameText);
             this.groupBox3.Location = new System.Drawing.Point(743, 519);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 185);
+            this.groupBox3.Size = new System.Drawing.Size(227, 185);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Создание игрока";
             // 
             // playerDateText
             // 
-            this.playerDateText.Location = new System.Drawing.Point(125, 49);
+            this.playerDateText.Location = new System.Drawing.Point(122, 49);
             this.playerDateText.Name = "playerDateText";
-            this.playerDateText.Size = new System.Drawing.Size(69, 20);
+            this.playerDateText.Size = new System.Drawing.Size(86, 20);
             this.playerDateText.TabIndex = 11;
             this.playerDateText.TextChanged += new System.EventHandler(this.playerDateText_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(105, 32);
+            this.label9.Location = new System.Drawing.Point(119, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 13);
             this.label9.TabIndex = 10;
@@ -358,6 +358,7 @@
             this.Controls.Add(this.listBoxTournaments);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
