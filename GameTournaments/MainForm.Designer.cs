@@ -52,7 +52,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.playerSurnameText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.AddPlayerButton = new System.Windows.Forms.Button();
+            this.addPlayerButton = new System.Windows.Forms.Button();
             this.playerNameText = new System.Windows.Forms.TextBox();
             this.listBoxPlayers = new System.Windows.Forms.ListBox();
             this.RemoveTeamButton = new System.Windows.Forms.Button();
@@ -71,7 +71,6 @@
             this.listBoxTournaments.Name = "listBoxTournaments";
             this.listBoxTournaments.Size = new System.Drawing.Size(248, 472);
             this.listBoxTournaments.TabIndex = 0;
-            this.listBoxTournaments.Click += new System.EventHandler(this.listBox1_Click);
             this.listBoxTournaments.SelectedIndexChanged += new System.EventHandler(this.listBoxTournaments_SelectedIndexChanged);
             // 
             // addTournamentButton
@@ -92,7 +91,7 @@
             this.RemoveTournamentButton.TabIndex = 2;
             this.RemoveTournamentButton.Text = "Удалить";
             this.RemoveTournamentButton.UseVisualStyleBackColor = true;
-            this.RemoveTournamentButton.Click += new System.EventHandler(this.button2_Click);
+            this.RemoveTournamentButton.Click += new System.EventHandler(this.removeTournamentButton_Click);
             // 
             // tournamentGameDisciplineText
             // 
@@ -100,6 +99,7 @@
             this.tournamentGameDisciplineText.Name = "tournamentGameDisciplineText";
             this.tournamentGameDisciplineText.Size = new System.Drawing.Size(100, 20);
             this.tournamentGameDisciplineText.TabIndex = 8;
+            this.tournamentGameDisciplineText.TextChanged += new System.EventHandler(this.tournamentGameDisciplineText_TextChanged);
             // 
             // tournamentPrizepoolText
             // 
@@ -107,6 +107,7 @@
             this.tournamentPrizepoolText.Name = "tournamentPrizepoolText";
             this.tournamentPrizepoolText.Size = new System.Drawing.Size(100, 20);
             this.tournamentPrizepoolText.TabIndex = 9;
+            this.tournamentPrizepoolText.TextChanged += new System.EventHandler(this.tournamentPrizepoolText_TextChanged);
             // 
             // label3
             // 
@@ -132,8 +133,7 @@
             this.tournamentNameText.Name = "tournamentNameText";
             this.tournamentNameText.Size = new System.Drawing.Size(100, 20);
             this.tournamentNameText.TabIndex = 5;
-            this.tournamentNameText.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            this.tournamentNameText.Leave += new System.EventHandler(this.tournamentNameText_Leave);
+            this.tournamentNameText.TextChanged += new System.EventHandler(this.tournamentNameText_TextChanged);
             // 
             // label1
             // 
@@ -143,7 +143,6 @@
             this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Название турнира:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -200,7 +199,7 @@
             this.addTeamButton.TabIndex = 1;
             this.addTeamButton.Text = "Добавить";
             this.addTeamButton.UseVisualStyleBackColor = true;
-            this.addTeamButton.Click += new System.EventHandler(this.button3_Click);
+            this.addTeamButton.Click += new System.EventHandler(this.addTeamButton_Click);
             // 
             // teamNameText
             // 
@@ -208,7 +207,8 @@
             this.teamNameText.Name = "teamNameText";
             this.teamNameText.Size = new System.Drawing.Size(100, 20);
             this.teamNameText.TabIndex = 5;
-            this.teamNameText.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.teamNameText.TextChanged += new System.EventHandler(this.teamNameText_TextChanged);
+            this.teamNameText.Validating += new System.ComponentModel.CancelEventHandler(this.teamNameText_Validating);
             // 
             // groupBox3
             // 
@@ -219,7 +219,7 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.playerSurnameText);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.AddPlayerButton);
+            this.groupBox3.Controls.Add(this.addPlayerButton);
             this.groupBox3.Controls.Add(this.playerNameText);
             this.groupBox3.Location = new System.Drawing.Point(743, 519);
             this.groupBox3.Name = "groupBox3";
@@ -227,14 +227,14 @@
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Создание игрока";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // playerDateText
             // 
-            this.playerDateText.Location = new System.Drawing.Point(108, 49);
+            this.playerDateText.Location = new System.Drawing.Point(125, 49);
             this.playerDateText.Name = "playerDateText";
-            this.playerDateText.Size = new System.Drawing.Size(86, 20);
+            this.playerDateText.Size = new System.Drawing.Size(69, 20);
             this.playerDateText.TabIndex = 11;
+            this.playerDateText.TextChanged += new System.EventHandler(this.playerDateText_TextChanged);
             // 
             // label9
             // 
@@ -244,7 +244,6 @@
             this.label9.Size = new System.Drawing.Size(89, 13);
             this.label9.TabIndex = 10;
             this.label9.Text = "Дата рождения:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // playerNicknameText
             // 
@@ -252,6 +251,7 @@
             this.playerNicknameText.Name = "playerNicknameText";
             this.playerNicknameText.Size = new System.Drawing.Size(93, 20);
             this.playerNicknameText.TabIndex = 9;
+            this.playerNicknameText.TextChanged += new System.EventHandler(this.playerNicknameText_TextChanged);
             // 
             // label8
             // 
@@ -261,7 +261,6 @@
             this.label8.Size = new System.Drawing.Size(30, 13);
             this.label8.TabIndex = 8;
             this.label8.Text = "Ник:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label6
             // 
@@ -278,6 +277,7 @@
             this.playerSurnameText.Name = "playerSurnameText";
             this.playerSurnameText.Size = new System.Drawing.Size(93, 20);
             this.playerSurnameText.TabIndex = 6;
+            this.playerSurnameText.TextChanged += new System.EventHandler(this.playerSurnameText_TextChanged);
             // 
             // label7
             // 
@@ -288,15 +288,15 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Имя";
             // 
-            // AddPlayerButton
+            // addPlayerButton
             // 
-            this.AddPlayerButton.Location = new System.Drawing.Point(9, 154);
-            this.AddPlayerButton.Name = "AddPlayerButton";
-            this.AddPlayerButton.Size = new System.Drawing.Size(100, 23);
-            this.AddPlayerButton.TabIndex = 1;
-            this.AddPlayerButton.Text = "Добавить";
-            this.AddPlayerButton.UseVisualStyleBackColor = true;
-            this.AddPlayerButton.Click += new System.EventHandler(this.button4_Click);
+            this.addPlayerButton.Location = new System.Drawing.Point(9, 154);
+            this.addPlayerButton.Name = "addPlayerButton";
+            this.addPlayerButton.Size = new System.Drawing.Size(100, 23);
+            this.addPlayerButton.TabIndex = 1;
+            this.addPlayerButton.Text = "Добавить";
+            this.addPlayerButton.UseVisualStyleBackColor = true;
+            this.addPlayerButton.Click += new System.EventHandler(this.addPlayerButton_Click);
             // 
             // playerNameText
             // 
@@ -305,6 +305,7 @@
             this.playerNameText.Size = new System.Drawing.Size(93, 20);
             this.playerNameText.TabIndex = 5;
             this.playerNameText.TextChanged += new System.EventHandler(this.playerNameText_TextChanged);
+            this.playerNameText.Validating += new System.ComponentModel.CancelEventHandler(this.playerNameText_Validating);
             // 
             // listBoxPlayers
             // 
@@ -314,7 +315,7 @@
             this.listBoxPlayers.Size = new System.Drawing.Size(248, 472);
             this.listBoxPlayers.TabIndex = 13;
             this.listBoxPlayers.SelectedIndexChanged += new System.EventHandler(this.listBoxPlayers_SelectedIndexChanged);
-            this.listBoxPlayers.DoubleClick += new System.EventHandler(this.listBoxPlayers_DoubleClick_1);
+            this.listBoxPlayers.DoubleClick += new System.EventHandler(this.listBoxPlayers_DoubleClick);
             // 
             // RemoveTeamButton
             // 
@@ -324,7 +325,7 @@
             this.RemoveTeamButton.TabIndex = 15;
             this.RemoveTeamButton.Text = "Удалить";
             this.RemoveTeamButton.UseVisualStyleBackColor = true;
-            this.RemoveTeamButton.Click += new System.EventHandler(this.button5_Click);
+            this.RemoveTeamButton.Click += new System.EventHandler(this.removeTeamButton_Click);
             // 
             // RemovePlayerButton
             // 
@@ -334,7 +335,7 @@
             this.RemovePlayerButton.TabIndex = 16;
             this.RemovePlayerButton.Text = "Удалить";
             this.RemovePlayerButton.UseVisualStyleBackColor = true;
-            this.RemovePlayerButton.Click += new System.EventHandler(this.button6_Click);
+            this.RemovePlayerButton.Click += new System.EventHandler(this.removePlayerButton_Click);
             // 
             // errorProvider1
             // 
@@ -357,7 +358,6 @@
             this.Controls.Add(this.listBoxTournaments);
             this.Name = "MainForm";
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -390,7 +390,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox playerSurnameText;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button AddPlayerButton;
+        private System.Windows.Forms.Button addPlayerButton;
         private System.Windows.Forms.TextBox playerNameText;
         private System.Windows.Forms.ListBox listBoxPlayers;
         private System.Windows.Forms.Label label8;
